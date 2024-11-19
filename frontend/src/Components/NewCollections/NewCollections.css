@@ -1,0 +1,89 @@
+.new-collections {
+  background-color: #f2f2f2; /* Light grey background */
+  padding: 2rem 1rem;
+  margin-top: 2rem; /* Adds separation from previous section */
+}
+
+.new-collections h1 {
+  color: #d40067; /* Dark shade of pink */
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.new-collections hr {
+  width: 80px;
+  height: 3px;
+  background-color: #d40067; /* Dark pink for the line */
+  border: none;
+  margin: 0 auto 2rem auto;
+}
+
+.collections {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+  gap: 1.5rem; /* Space between items */
+}
+
+.item {
+  background-color: #fff; /* White background for the card */
+  border: 1px solid #ddd; /* Light border for separation */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 250px; /* Increased width for larger image */
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.item img {
+  width: 100%; /* Full width */
+  height: 180px; /* Increased height for larger images */
+  object-fit: cover; /* Ensures image fits well without distortion */
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.item p {
+  font-size: 1.2rem;
+  color: #333; /* Dark grey for text */
+  margin: 0.5rem 0;
+}
+
+.item-prices {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.item-price-new {
+  color: #d40067; /* Highlighted dark pink for new price */
+  font-weight: bold;
+}
+
+.item-price-old {
+  color: #888; /* Grey for old price */
+  text-decoration: line-through;
+}
+
+@media (max-width: 768px) {
+  .collections {
+    justify-content: center;
+  }
+
+  .item {
+    width: 200px; /* Adjusted width for smaller screens */
+  }
+
+  .item img {
+    height: 150px; /* Adjusted height for smaller images on small screens */
+  }
+}

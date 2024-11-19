@@ -1,0 +1,335 @@
+/// Import images
+import dress1 from "./dress1.jpg";
+import dress2 from "./dress2.jpg";
+import dress3 from "./dress3.jpg";
+import casual1 from "./casual1.jpg";
+import casual2 from "./casual2.jpg";
+import casual3 from "./casual3.jpg";
+import jacket1 from "./jacket1.jpg";
+import jacket2 from "./jacket2.jpg";
+import jacket3 from "./jacket3.jpg";
+import pants1 from "./pants1.jpg";
+import pants2 from "./pants2.jpg";
+import pants3 from "./pants3.jpg";
+import shoes1 from "./shoes1.jpg";
+import shoes2 from "./shoes2.jpg";
+import shoes3 from "./shoes3.jpg";
+import bag1 from "./bag1.jpg";
+import bag2 from "./bag2.jpg";
+import bag3 from "./bag3.jpg";
+
+// All Products Array
+// Category: Women
+const all_product = [
+  {
+    id: 32,
+    name: "Casual Cargo Pants",
+    category: "women",
+    image: pants2,
+    newPrice: "$60.00",
+    oldPrice: "$80.00",
+  },
+  {
+    id: 1,
+    name: "Elegant Red Dress",
+    category: "women",
+    image: dress1,
+    newPrice: "$99.99",
+    oldPrice: "$129.99",
+  },
+  {
+    id: 2,
+    name: "Casual Blue Dress",
+    category: "women",
+    image: dress2,
+    newPrice: "$79.99",
+    oldPrice: "$99.99",
+  },
+
+  // Category: Casual Wear (Men)
+  {
+    id: 3,
+    name: "Relaxed T-Shirt",
+    category: "women",
+    image: casual1,
+    newPrice: "$19.99",
+    oldPrice: "$29.99",
+  },
+  {
+    id: 4,
+    name: "Comfortable Shorts",
+    category: "men",
+    image: casual2,
+    newPrice: "$25.99",
+    oldPrice: "$35.99",
+  },
+
+  // Category: Jackets (Men)
+  {
+    id: 5,
+    name: "Leather Jacket",
+    category: "men",
+    image: jacket1,
+    newPrice: "$150.00",
+    oldPrice: "$200.00",
+  },
+  {
+    id: 6,
+    name: "Winter Coat",
+    category: "men",
+    image: jacket2,
+    newPrice: "$120.00",
+    oldPrice: "$180.00",
+  },
+
+  // Category: Pants (Men)
+  {
+    id: 7,
+    name: "Formal Trousers",
+    category: "men",
+    image: pants1,
+    newPrice: "$49.99",
+    oldPrice: "$69.99",
+  },
+  {
+    id: 8,
+    name: "Casual Pants",
+    category: "men",
+    image: pants2,
+    newPrice: "$39.99",
+    oldPrice: "$59.99",
+  },
+
+  // Category: Shoes (Men)
+  {
+    id: 9,
+    name: "Sports Sneakers",
+    category: "men",
+    image: shoes1,
+    newPrice: "$89.99",
+    oldPrice: "$109.99",
+  },
+  {
+    id: 10,
+    name: "Formal Shoes",
+    category: "women",
+    image: shoes2,
+    newPrice: "$99.99",
+    oldPrice: "$129.99",
+  },
+
+  // Category: Bags (Men)
+  {
+    id: 11,
+    name: "Classic Handbag",
+    category: "men",
+    image: bag1,
+    newPrice: "$59.99",
+    oldPrice: "$79.99",
+  },
+  {
+    id: 12,
+    name: "Travel Backpack",
+    category: "women",
+    image: bag2,
+    newPrice: "$49.99",
+    oldPrice: "$69.99",
+  },
+
+  // Category: Kids (New Items for Kids)
+  {
+    id: 13,
+    name: "Black Gown",
+    category: "kids",
+    image: dress3,
+    newPrice: "$95.00",
+    oldPrice: "$125.00",
+  },
+  {
+    id: 14,
+    name: "Green Summer Dress",
+    category: "kids",
+    image: dress3,
+    newPrice: "$85.00",
+    oldPrice: "$110.00",
+  },
+
+  // More Kids' Items (Dresses, Casual, Jackets, etc.)
+  {
+    id: 15,
+    name: "White T-Shirt",
+    category: "kids",
+    image: casual3,
+    newPrice: "$22.00",
+    oldPrice: "$30.00",
+  },
+  {
+    id: 16,
+    name: "Denim Shorts",
+    category: "kids",
+    image: casual3,
+    newPrice: "$35.00",
+    oldPrice: "$45.00",
+  },
+  {
+    id: 17,
+    name: "Faux Leather Jacket",
+    category: "kids",
+    image: jacket3,
+    newPrice: "$140.00",
+    oldPrice: "$180.00",
+  },
+  {
+    id: 18,
+    name: "Woolen Coat",
+    category: "kids",
+    image: jacket3,
+    newPrice: "$130.00",
+    oldPrice: "$170.00",
+  },
+
+  {
+    id: 19,
+    name: "Skinny Jeans",
+    category: "kids",
+    image: pants3,
+    newPrice: "$42.00",
+    oldPrice: "$62.00",
+  },
+  {
+    id: 20,
+    name: "Jogger Pants",
+    category: "kids",
+    image: pants3,
+    newPrice: "$37.00",
+    oldPrice: "$57.00",
+  },
+
+  {
+    id: 21,
+    name: "Running Shoes",
+    category: "kids",
+    image: shoes3,
+    newPrice: "$88.00",
+    oldPrice: "$108.00",
+  },
+  {
+    id: 22,
+    name: "Brown Loafers",
+    category: "kids",
+    image: shoes3,
+    newPrice: "$92.00",
+    oldPrice: "$122.00",
+  },
+
+  {
+    id: 23,
+    name: "Stylish Tote",
+    category: "kids",
+    image: bag3,
+    newPrice: "$58.00",
+    oldPrice: "$78.00",
+  },
+  {
+    id: 24,
+    name: "Leather Satchel",
+    category: "kids",
+    image: bag3,
+    newPrice: "$48.00",
+    oldPrice: "$68.00",
+  },
+
+  // Remaining Categories
+  {
+    id: 25,
+    name: "Beach Tote Bag",
+    category: "men",
+    image: bag1,
+    newPrice: "$55.00",
+    oldPrice: "$75.00",
+  },
+  {
+    id: 26,
+    name: "Chunky Sneakers",
+    category: "men",
+    image: shoes2,
+    newPrice: "$120.00",
+    oldPrice: "$150.00",
+  },
+  {
+    id: 27,
+    name: "Fleece Jacket",
+    category: "men",
+    image: jacket1,
+    newPrice: "$85.00",
+    oldPrice: "$105.00",
+  },
+  {
+    id: 28,
+    name: "Trench Coat",
+    category: "women",
+    image: jacket2,
+    newPrice: "$115.00",
+    oldPrice: "$145.00",
+  },
+  {
+    id: 29,
+    name: "Printed Dress",
+    category: "women",
+    image: dress1,
+    newPrice: "$80.00",
+    oldPrice: "$100.00",
+  },
+  {
+    id: 30,
+    name: "Maxi Dress",
+    category: "women",
+    image: dress2,
+    newPrice: "$95.00",
+    oldPrice: "$125.00",
+  },
+
+  {
+    id: 31,
+    name: "Slim Fit Jeans",
+    category: "men",
+    image: pants1,
+    newPrice: "$55.00",
+    oldPrice: "$75.00",
+  },
+
+  {
+    id: 33,
+    name: "Running Sneakers",
+    category: "men",
+    image: shoes1,
+    newPrice: "$100.00",
+    oldPrice: "$130.00",
+  },
+  {
+    id: 34,
+    name: "High-Top Sneakers",
+    category: "women",
+    image: shoes2,
+    newPrice: "$110.00",
+    oldPrice: "$140.00",
+  },
+  {
+    id: 35,
+    name: "Leather Crossbody Bag",
+    category: "women",
+    image: bag1,
+    newPrice: "$85.00",
+    oldPrice: "$110.00",
+  },
+  {
+    id: 36,
+    name: "Rucksack Backpack",
+    category: "women",
+    image: bag2,
+    newPrice: "$70.00",
+    oldPrice: "$90.00",
+  },
+];
+
+export default all_product;

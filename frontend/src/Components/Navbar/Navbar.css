@@ -1,0 +1,90 @@
+/* General Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #d5006d; /* Light pink background */
+  color: white;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo styling */
+.navbar div p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Navigation menu styling */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-menu li:hover {
+  color: black; /* Hover effect */
+}
+
+/* Login and cart section */
+.nav-login-cart {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-login-cart button {
+  background-color: white;
+  color: #d5006d;
+  border: 2px solid #ff8ba7;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-login-cart button:hover {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+/* FontAwesome icon */
+.nav-login-cart svg {
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-login-cart svg:hover {
+  color: black; /* Hover effect for icon */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* Hide menu on smaller screens */
+  }
+
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-login-cart {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}

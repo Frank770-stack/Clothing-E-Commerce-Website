@@ -1,0 +1,74 @@
+.Offers {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #f5f5f5; /* Light grey background */
+  margin-top: 50px; /* Add separation from the section above */
+}
+
+.offers-left {
+  flex: 1;
+  text-align: left;
+  color: #333; /* Dark text for contrast */
+  margin-top: 20px; /* Added margin to lower the text */
+}
+
+.offers-left h1 {
+  font-size: 3rem; /* Increased font size */
+  font-weight: 700;
+  color: #ff0066; /* Dark pink shade */
+  margin: 0;
+}
+
+.offers-left p {
+  font-size: 1.5rem; /* Increased font size */
+  color: #666;
+  margin-top: 10px;
+}
+
+.offers-left button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #ff0066; /* Dark pink */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.offers-left button:hover {
+  background-color: #e6005c; /* Slightly darker pink on hover */
+}
+
+.offers-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.offers-right img {
+  width: 80%; /* Reduced width to make the image smaller */
+  height: auto; /* Keep the aspect ratio intact */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .Offers {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .offers-left {
+    margin-bottom: 20px;
+  }
+
+  .offers-right img {
+    width: 60%; /* Further reduce the image width on smaller screens */
+    height: auto;
+    margin-top: 20px;
+  }
+}

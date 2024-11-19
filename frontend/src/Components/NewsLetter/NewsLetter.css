@@ -1,0 +1,68 @@
+.NewsLetter {
+  background-color: #f2f2f2; /* Light grey background */
+  padding: 3rem 1.5rem; /* Increased padding */
+  text-align: center;
+  margin-top: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.NewsLetter h1 {
+  font-size: 2.5rem; /* Larger headline */
+  color: #d40067; /* Dark pink color */
+  margin-bottom: 1rem;
+}
+
+.NewsLetter p {
+  font-size: 1.25rem; /* Larger paragraph text */
+  color: #555; /* Medium grey */
+  margin-bottom: 2rem;
+}
+
+.NewsLetter div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* Increased spacing */
+}
+
+.NewsLetter input {
+  width: 350px; /* Increased width */
+  padding: 1rem; /* Larger padding */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 6px;
+  font-size: 1.2rem; /* Larger font size */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.NewsLetter input:focus {
+  border-color: #d40067; /* Highlighted border on focus */
+}
+
+.NewsLetter button {
+  background-color: #d40067; /* Dark pink button */
+  color: #fff;
+  padding: 1rem 1.5rem; /* Larger button */
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem; /* Larger font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.NewsLetter button:hover {
+  background-color: #b30055; /* Slightly darker shade on hover */
+  transform: scale(1.08); /* Larger scale effect on hover */
+}
+
+@media (max-width: 768px) {
+  .NewsLetter div {
+    flex-direction: column;
+    gap: 1.5rem; /* Increased spacing for mobile */
+  }
+
+  .NewsLetter input {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
