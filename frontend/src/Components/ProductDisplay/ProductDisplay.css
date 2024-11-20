@@ -1,0 +1,129 @@
+/* ProductDisplay.css */
+.productdisplay {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.productdisplay-left {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.productdisply-img-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.productdisply-img-list img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.productdisply-img-list img:hover {
+  transform: scale(1.1);
+}
+
+.productdisplay-img {
+  text-align: center;
+}
+
+.productdisplay-main-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+
+.productdisplay-right {
+  flex: 1.5;
+  padding-left: 20px;
+  border-left: 1px solid #ddd;
+}
+
+.productdisplay-right h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.productdisplay-right-star {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.productdisplay-right-star {
+  color: rgb(255, 0, 0);
+  margin-right: 5px;
+}
+
+.productdisplay-right-prices {
+  margin-bottom: 20px;
+}
+
+.productdisplay-right-price-old {
+  text-decoration: line-through;
+  color: #777;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.productdisplay-right-price-new {
+  color: #e53946;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.productdisplay-right-description {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.productdisplay-right-size {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.productdisplay-right-size div {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.productdisplay-right-size div:hover {
+  background-color: #e0e0e0;
+}
+
+.product-cart-button {
+  background-color: #d5006d;
+  color: white;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.product-cart-button:hover {
+  background-color: #d32f2f;
+}
+
+.productdisplay-right-category {
+  font-size: 1rem;
+  color: #777;
+}
+
+.productdisplay-right-category span {
+  font-weight: bold;
+  color: #333;
+}

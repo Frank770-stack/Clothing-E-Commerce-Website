@@ -1,0 +1,43 @@
+/* Breadcrum.css */
+.breadcrum {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #555;
+  padding: 20px 0;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ddd;
+}
+
+.breadcrum span {
+  color: #333;
+  font-weight: bold;
+}
+
+.breadcrum svg {
+  margin: 0 10px;
+  color: #999;
+}
+
+.breadcrum a {
+  color: #e53946;
+  text-decoration: none;
+}
+
+.breadcrum a:hover {
+  text-decoration: underline;
+}
+
+.breadcrum .fa-arrow-right {
+  color: #999;
+}
+
+.breadcrum .breadcrum-category {
+  color: #333;
+  font-weight: bold;
+}
+
+.breadcrum .breadcrum-name {
+  color: #e53946;
+  font-weight: bold;
+}
