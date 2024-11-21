@@ -4,11 +4,11 @@ import { ShopContext } from "../../Context/ShopContext";
 
 const CartItems = () => {
   const { all_product, cartItems, removeFromCart } = useContext(ShopContext);
-
+  console.log(all_product);
   // Calculate Subtotal
   const calculateSubtotal = () => {
     return all_product.reduce((subtotal, product) => {
-      const price = parseFloat(product.newPrice) || 0; // Parse product price
+      const price = parseFloat(product.newPrice.replace("$", "")) || 0; // Parse product price
       const quantity = cartItems[product.id] || 0; // Get product quantity
       return subtotal + price * quantity;
     }, 0);
@@ -30,7 +30,7 @@ const CartItems = () => {
 
       {all_product.map((e) => {
         if (cartItems[e.id] > 0) {
-          const price = parseFloat(e.newPrice) || 0;
+          const price = parseFloat(e.newPrice.replace("$", "")) || 0;
           const quantity = cartItems[e.id] || 0;
           const total = price * quantity;
 
