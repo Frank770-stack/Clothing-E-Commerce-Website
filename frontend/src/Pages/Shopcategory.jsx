@@ -17,13 +17,6 @@ const ShopCategory = (props) => {
         </div>
       </div>
 
-      {/* Sorting and Product Display Section */}
-      <div className="shopcategory-indexSort">
-        <p>
-          <span>Showing 1- 12</span> out of 36 products
-        </p>
-      </div>
-
       <div className="shopcategory-product">
         {all_product.map((item) => {
           if (props.category === item.category) {

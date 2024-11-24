@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { ShopContext } from "../../Context/ShopContext"; // Ensure ShopContext is imported
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
+  const { cartItems } = useContext(ShopContext); // Access the cartItems from context
+
+  // Calculate the total number of items in the cart
+  const calculateTotalItems = () => {
+    return Object.values(cartItems).reduce((total, count) => total + count, 0); // Sum all item counts
+  };
+
+  const totalItems = calculateTotalItems(); // Get total items count
 
   return (
     <div className="navbar">
@@ -42,8 +51,10 @@ const Navbar = () => {
         <Link to="/login">
           <button>Login</button>
         </Link>
-        <Link to="/cart">
+        <Link to="/cart" className="cart-link">
           <FontAwesomeIcon icon={faCartShopping} />
+          {/* Show the cart count if there are items */}
+          {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
         </Link>
       </div>
     </div>

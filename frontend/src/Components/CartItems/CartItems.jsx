@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
+import { useNavigate } from "react-router-dom";
 
 const CartItems = () => {
-  const { all_product, cartItems, removeFromCart } = useContext(ShopContext);
-  console.log(all_product);
+  const { all_product, cartItems, addToCart, removeFromCart } =
+    useContext(ShopContext);
+  const navigate = useNavigate();
   // Calculate Subtotal
   const calculateSubtotal = () => {
     return all_product.reduce((subtotal, product) => {
@@ -24,7 +26,7 @@ const CartItems = () => {
         <p>Price</p>
         <p>Quantity</p>
         <p>Total</p>
-        <p>Remove</p>
+        <p>Actions</p>
       </div>
       <hr />
 
@@ -41,13 +43,26 @@ const CartItems = () => {
               <p>{price.toFixed(2)}</p>
               <button className="cartitems-quantity">{quantity}</button>
               <p>{total.toFixed(2)}</p>
-              <button
-                onClick={() => {
-                  removeFromCart(e.id);
-                }}
-              >
-                Remove From Cart
-              </button>
+              <div className="cartitems-actions">
+                {/* Add Increase Quantity Button */}
+                <button
+                  onClick={() => {
+                    addToCart(e.id);
+                  }}
+                  className="increase-button"
+                >
+                  ADD
+                </button>
+                {/* Remove From Cart Button */}
+                <button
+                  onClick={() => {
+                    removeFromCart(e.id);
+                  }}
+                  className="remove-button"
+                >
+                  REDUCE
+                </button>
+              </div>
             </div>
           );
         }
@@ -73,6 +88,12 @@ const CartItems = () => {
         </div>
         <button className="proceed-to-checkout-button">
           Proceed to Checkout
+        </button>
+        <button
+          onClick={() => navigate("/")}
+          className="continue-shopping-button"
+        >
+          Continue Shopping
         </button>
       </div>
     </div>

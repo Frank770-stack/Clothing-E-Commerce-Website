@@ -3,10 +3,12 @@ import "./ProductDisplay.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { ShopContext } from "../../Context/ShopContext";
+import { useNavigate } from "react-router-dom";
 
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
+  const navigate = useNavigate();
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
@@ -62,11 +64,17 @@ const ProductDisplay = (props) => {
           ADD TO CART
         </button>
         <p className="productdisplay-right-category">
-          <span>Category :</span> Women, T-Shirt, Crop Top
+          {/* <span>Category :</span> Women, T-Shirt, Crop Top */}
         </p>
         <p className="productdisplay-right-category">
           <span>Tags :</span> Modern, Latest
         </p>
+        <button
+          onClick={() => navigate("/cart")} // Navigate to the cart page
+          className="product-cart-button"
+        >
+          Go To Cart
+        </button>
       </div>
     </div>
   );

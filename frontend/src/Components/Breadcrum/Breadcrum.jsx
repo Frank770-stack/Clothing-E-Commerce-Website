@@ -6,7 +6,7 @@ import "./Breadcrum.css";
 const Breadcrum = ({ product }) => {
   return (
     <div className="breadcrum">
-      HOME <FontAwesomeIcon icon={faArrowRight} /> SHOP
+      Home <FontAwesomeIcon icon={faArrowRight} /> Shop
       <FontAwesomeIcon icon={faArrowRight} />
       {product.category} <FontAwesomeIcon icon={faArrowRight} />
       {product.name}

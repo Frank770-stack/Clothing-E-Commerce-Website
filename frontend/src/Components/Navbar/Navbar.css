@@ -8,22 +8,32 @@
   color: white;
   font-family: Arial, sans-serif;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Make the navbar fixed at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  transition: top 0.3s; /* Optional: smooth transition for scroll actions */
 }
 
-/* Logo styling */
+/* Logo styling - Aligning The Wardrobe Co. to the far left */
 .navbar div p {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
+  text-align: left;
 }
 
-/* Navigation menu styling */
+/* Navigation menu styling - Aligning "Shop", "Men", and "Women" in the center */
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 2rem;
   margin: 0;
   padding: 0;
+  justify-content: center; /* Centers the menu */
+  flex-grow: 1; /* Allow this section to take up available space */
 }
 
 .nav-menu li {
@@ -36,13 +46,15 @@
   color: black; /* Hover effect */
 }
 
-/* Login and cart section */
+/* Login and cart section - Aligning to the right but closer to the center */
 .nav-login-cart {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  margin-right: 1.5rem; /* Reduced space from the far right */
 }
 
+/* Login button styling */
 .nav-login-cart button {
   background-color: white;
   color: #d5006d;
@@ -60,9 +72,9 @@
   border-color: black;
 }
 
-/* FontAwesome icon */
+/* FontAwesome icon styling - Cart icon */
 .nav-login-cart svg {
-  font-size: 1.5rem;
+  font-size: 2rem; /* Increase icon size */
   color: white;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -70,6 +82,32 @@
 
 .nav-login-cart svg:hover {
   color: black; /* Hover effect for icon */
+}
+
+/* Cart item count badge styling */
+.cart-link {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 5px 10px;
+  min-width: 20px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Make sure navbar items don’t get covered by page content */
+body {
+  padding-top: 80px; /* Adjust based on navbar height */
 }
 
 /* Media query for responsiveness */

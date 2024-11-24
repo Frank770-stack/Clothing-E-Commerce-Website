@@ -6,25 +6,26 @@
 }
 
 .cartitems-format-main {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr 2fr; /* Adjusted column widths */
   align-items: center;
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 10px;
-}
-
-.cartitems-format-main p {
-  flex: 1;
   text-align: center;
 }
 
+.cartitems-format-main p {
+  margin: 0;
+}
+
 .cartitems-format {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr 2fr; /* Matches the header layout */
   align-items: center;
-  justify-content: space-between;
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
+  text-align: center;
 }
 
 .cartitems-format img {
@@ -32,24 +33,56 @@
   height: 80px;
   object-fit: cover;
   border-radius: 5px;
+  justify-self: center; /* Centers the image */
 }
 
-.cartitems-format p,
-.cartitems-format button {
-  flex: 1;
-  text-align: center;
-  margin: 0 5px;
+.cartitems-format p {
+  margin: 0;
 }
 
-.cartitems-format button {
-  background-color: #d5006d;
+/* Actions section to group Increase and Remove buttons */
+.cartitems-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cartitems-actions .increase-button,
+.cartitems-actions .remove-button {
   padding: 5px 10px;
+  font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
-.cartitems-format button:hover {
-  background-color: #0e84f1;
+/* Styling for the Increase Quantity button */
+.cartitems-actions .increase-button {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.cartitems-actions .increase-button:hover {
+  background-color: #218838;
+}
+
+.cartitems-actions .increase-button:active {
+  background-color: #1e7e34;
+}
+
+/* Styling for the Remove button */
+.cartitems-actions .remove-button {
+  background-color: #dc3545; /* Red */
+  color: white;
+}
+
+.cartitems-actions .remove-button:hover {
+  background-color: #c82333;
+}
+
+.cartitems-actions .remove-button:active {
+  background-color: #bd2130;
 }
 
 .cartitems-summary {
@@ -95,4 +128,26 @@
 
 .proceed-to-checkout-button:active {
   background-color: #004085;
+}
+.continue-shopping-button {
+  display: block;
+  margin: 10px auto 0; /* Adjust spacing below Proceed to Checkout */
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #28a745; /* Green button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.continue-shopping-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.continue-shopping-button:active {
+  background-color: #1e7e34; /* Even darker green on active */
 }
