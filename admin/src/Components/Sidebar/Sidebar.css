@@ -1,0 +1,53 @@
+.sidebar {
+  position: fixed;
+  left: 0; /* Align sidebar to the left */
+  top: 60px; /* Adjust this value to match the height of your navbar */
+  width: 250px; /* Sidebar width */
+  height: calc(100% - 60px); /* Full height minus the navbar height */
+  background-color: #f4f4f4; /* Light gray background */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow on the right */
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px; /* Space between items */
+  padding: 10px;
+  width: 90%;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background-color: #e0e0e0; /* Highlight item on hover */
+}
+
+.sidebar-item img {
+  width: 32px; /* Uniform icon size */
+  height: 32px;
+}
+
+.sidebar-item p {
+  margin: 0;
+  font-size: 16px;
+  color: #333; /* Darker text for better contrast */
+  font-weight: 500;
+  flex: 1;
+  text-align: left;
+}
+
+.sidebar a {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit color for text */
+}
+
+.sidebar a:focus,
+.sidebar a:active {
+  outline: none; /* Remove focus outline for cleaner look */
+}

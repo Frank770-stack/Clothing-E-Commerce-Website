@@ -1,12 +1,11 @@
-const port = 4000;
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { type } = require("os");
-const { log } = require("console");
+
+const app = express();
+const port = 4000;
 
 // Middleware
 app.use(express.json());
@@ -39,7 +38,7 @@ const upload = multer({ storage: storage });
 
 // Upload Endpoint
 app.use("/Images", express.static(path.resolve(__dirname, "Upload/Images")));
-app.post("/Upload", upload.single("product"), (req, res) => {
+app.post("/upload", upload.single("product"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ success: 0, message: "No file uploaded" });
   }
@@ -49,7 +48,7 @@ app.post("/Upload", upload.single("product"), (req, res) => {
   });
 });
 
-//Schema for product creation
+// Schema for Product Creation
 const Product = mongoose.model("Product", {
   id: {
     type: Number,
@@ -85,6 +84,7 @@ const Product = mongoose.model("Product", {
   },
 });
 
+// POST Route for Adding Products
 app.post("/addproduct", async (req, res) => {
   let products = await Product.find({});
   let id;
@@ -95,39 +95,42 @@ app.post("/addproduct", async (req, res) => {
   } else {
     id = 1;
   }
+
   const product = new Product({
-    id: id,
+    id,
     name: req.body.name,
     image: req.body.image,
     category: req.body.category,
     newPrice: req.body.newPrice,
     oldPrice: req.body.oldPrice,
   });
-  console.log(product);
+
   await product.save();
-  console.log("Saved");
+  console.log("Product Saved:", product);
+
   res.json({
     success: true,
     name: req.body.name,
   });
 });
 
-//Creating API for deleting products
+// POST Route for Removing Products
 app.post("/removeproduct", async (req, res) => {
   await Product.findOneAndDelete({ id: req.body.id });
-  console.log("Removed");
+  console.log("Product Removed");
   res.json({
     success: true,
     name: req.body.name,
   });
 });
 
-// Creating API for getting all products
+// GET Route for Fetching All Products
 app.get("/allproducts", async (req, res) => {
   let products = await Product.find({});
   console.log("All Products Fetched");
   res.send(products);
 });
+
 // API Root
 app.get("/", (req, res) => {
   res.send("Express App is Running");

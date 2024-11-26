@@ -1,0 +1,62 @@
+.list-product {
+  margin-left: 250px; /* Ensure content starts after the sidebar */
+  padding: 20px;
+}
+
+.listproduct-format-main {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 2fr 2fr 1fr; /* Increase the fraction for product name, price, etc. */
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.listproduct-format-main p,
+.listproduct-format-main img {
+  text-align: center;
+  margin: 0; /* Remove default margin to reduce space */
+}
+
+.listproduct-format-main p {
+  font-size: 16px;
+  color: #333;
+}
+
+.listproduct-product-icon {
+  width: 100px; /* Increased size of product image */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.listproduct-remove-icon {
+  width: 30px; /* Adjust remove icon size */
+  height: 30px;
+  cursor: pointer;
+}
+
+.listproduct-all-products {
+  margin-top: 20px;
+}
+
+.listproduct-all-products div {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 2fr 2fr 1fr; /* Increase the fraction for product name, price, etc. */
+  gap: 10px; /* Adjusted to create more space between the columns */
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.listproduct-all-products div p,
+.listproduct-all-products div img {
+  text-align: center;
+}
+
+hr {
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
