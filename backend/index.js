@@ -14,12 +14,13 @@ app.use(cors());
 
 // Database Connection
 mongoose.connect(
-  "mongodb+srv://njaombefrank:xuEQIzifdsFzfOz3@cluster0.bsub6.mongodb.net/TheWardrobeCo"
+  "mongodb+srv://njaombefrank:xuEQIzifdsFzfOz3@cluster0.bsub6.mongodb.net/TheWardrobeCo?retryWrites=true&w=majority"
 );
 
 mongoose.connection.on("connected", () => {
   console.log("MongoDB connected successfully");
 });
+
 mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err);
 });
@@ -111,6 +112,22 @@ app.post("/addproduct", async (req, res) => {
   });
 });
 
+//Creating API for deleting products
+app.post("/removeproduct", async (req, res) => {
+  await Product.findOneAndDelete({ id: req.body.id });
+  console.log("Removed");
+  res.json({
+    success: true,
+    name: req.body.name,
+  });
+});
+
+// Creating API for getting all products
+app.get("/allproducts", async (req, res) => {
+  let products = await Product.find({});
+  console.log("All Products Fetched");
+  res.send(products);
+});
 // API Root
 app.get("/", (req, res) => {
   res.send("Express App is Running");

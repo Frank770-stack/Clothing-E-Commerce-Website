@@ -1,0 +1,17 @@
+.navbar {
+  background-color: #8b0047; /* Dark shade of pink */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.navbar-left {
+  margin: 0;
+}
+
+.navbar-right {
+  margin: 0;
+}
