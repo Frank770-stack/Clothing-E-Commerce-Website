@@ -8,18 +8,22 @@ const CartItems = () => {
     useContext(ShopContext);
   const navigate = useNavigate();
 
+  // Helper function to parse price
+  const parsePrice = (price) => {
+    if (typeof price === "string") {
+      return parseFloat(price.replace("$", "")) || 0; // Remove "$" and parse as float
+    }
+    if (typeof price === "number") {
+      return price; // Return the number directly
+    }
+    return 0; // Default to 0 if price is invalid
+  };
+
   // Calculate Subtotal
   const calculateSubtotal = () => {
     return all_product.reduce((subtotal, product) => {
-      // Check if newPrice is a string with a '$' sign or a number
-      let price = 0;
-      if (typeof product.newPrice === "string") {
-        price = parseFloat(product.newPrice.replace("$", "")) || 0; // Remove '$' and parse as float
-      } else if (typeof product.newPrice === "number") {
-        price = product.newPrice; // If it's already a number, use it directly
-      }
-
-      const quantity = cartItems[product.id] || 0; // Get product quantity from the cart
+      const price = parsePrice(product.newPrice);
+      const quantity = cartItems[product.id] || 0;
       return subtotal + price * quantity;
     }, 0);
   };
@@ -39,23 +43,23 @@ const CartItems = () => {
       <hr />
 
       {all_product.map((product) => {
-        // Only display items that are in the cart
-        if (cartItems[product.id] > 0) {
-          const price = parseFloat(product.newPrice.replace("$", "")) || 0;
-          const quantity = cartItems[product.id] || 0;
+        const quantity = cartItems[product.id] || 0;
+
+        if (quantity > 0) {
+          const price = parsePrice(product.newPrice);
           const total = price * quantity;
 
           return (
             <div className="cartitems-format" key={product.id}>
               <img
-                src={product.image}
-                alt={product.name}
+                src={product.image || "/path/to/placeholder-image.jpg"} // Use placeholder if no image
+                alt={product.name || "Product"}
                 className="carticon-product-icon"
               />
-              <p>{product.name}</p>
-              <p>{price.toFixed(2)}</p>
+              <p>{product.name || "Unnamed Product"}</p>
+              <p>${price.toFixed(2)}</p>
               <button className="cartitems-quantity">{quantity}</button>
-              <p>{total.toFixed(2)}</p>
+              <p>${total.toFixed(2)}</p>
               <div className="cartitems-actions">
                 {/* Add Increase Quantity Button */}
                 <button

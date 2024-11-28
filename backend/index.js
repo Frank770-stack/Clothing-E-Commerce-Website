@@ -253,14 +253,41 @@ const fetchUser = async (req, re, next) => {
 };
 //creating endpoint for adding products in cartdata
 app.post("/addtocart", fetchUser, async (req, res) => {
-  console.log("added", req.body.itemId);
-  let userData = await Users.findOne({ id: req.user.id });
-  userData.cartData[req.body.itemId] += 1;
-  await Users.findOneAndUpdate(
-    { _id: req.user.id },
-    { cartData: userData.cartData }
-  );
-  res.send("Added");
+  try {
+    console.log("Adding item to cart:", req.body.itemId);
+
+    // Fetch the user data
+    const userData = await Users.findOne({ id: req.user.id });
+
+    if (!userData) {
+      return res.status(404).send("User not found");
+    }
+
+    // Ensure cartData exists
+    if (!userData.cartData) {
+      userData.cartData = {};
+    }
+
+    // Increment item quantity or initialize it if not present
+    const itemId = req.body.itemId;
+    if (!userData.cartData[itemId]) {
+      userData.cartData[itemId] = 1; // Add the item to the cart
+    } else {
+      userData.cartData[itemId] += 1; // Increment the quantity
+    }
+
+    // Update the user data in the database
+    await Users.findOneAndUpdate(
+      { id: req.user.id },
+      { cartData: userData.cartData },
+      { new: true } // Return the updated document
+    );
+
+    res.status(200).send("Item added to cart");
+  } catch (error) {
+    console.error("Error adding item to cart:", error);
+    res.status(500).send("An error occurred while adding the item to the cart");
+  }
 });
 
 //creating endpoint to remove productfrom cartdata
