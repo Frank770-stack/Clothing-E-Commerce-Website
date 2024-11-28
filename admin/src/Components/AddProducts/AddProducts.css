@@ -1,92 +1,78 @@
-/* General container for the AddProducts component */
-.AddProducts {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+.add-Product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the left within the section */
   padding: 20px;
+  width: 70%; /* Adjust width to occupy part of the screen */
+  margin: 0 auto; /* Center the container horizontally */
+  position: relative;
+  left: 25%; /* Push it to the middle-right */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  gap: 16px; /* Space between fields */
 }
 
-/* Style for each input field container */
 .addproduct-itemfield {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
 }
 
-/* Label for input fields */
 .addproduct-itemfield p {
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 8px;
   color: #333;
+  margin-bottom: 4px;
 }
 
-/* Styling for text inputs and select fields */
 .addproduct-itemfield input,
 .add-product-selector {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   font-size: 14px;
-  color: #333;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-/* Focus state for input fields */
-.addproduct-itemfield input:focus,
-.add-product-selector:focus {
-  border-color: #007bff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   outline: none;
 }
 
-/* Styling for image upload thumbnail */
-.addproduct-thumbnail-img {
+.addproduct-price {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  height: auto;
-  max-height: 150px;
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  display: block;
-  object-fit: contain;
-  margin-top: 10px;
+  gap: 16px;
+}
+
+.addproduct-thumbnail-img {
+  max-width: 100px;
   cursor: pointer;
+  border: 1px dashed #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s ease;
 }
 
-/* Hide the file input (the actual file picker) */
-input[type="file"] {
-  display: none;
+.addproduct-thumbnail-img:hover {
+  transform: scale(1.1);
 }
 
-/* Styling for the ADD button */
 .addproduct-btn {
   background-color: #007bff;
   color: #fff;
-  padding: 12px 20px;
   font-size: 16px;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  padding: 12px 20px;
   cursor: pointer;
-  width: 100%;
   transition: background-color 0.3s ease;
 }
 
-/* Hover effect for the ADD button */
 .addproduct-btn:hover {
   background-color: #0056b3;
 }
-
-/* Styling for form sections */
-.addproduct-itemfield {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Optional: Style for error messages */
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
+.test {
+  font-size: xx-large;
 }

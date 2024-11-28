@@ -3,17 +3,17 @@ import "./AddProducts.css";
 import upload from "../../assets/upload.png";
 
 const AddProducts = () => {
-  const [image, setImage] = useState(null); // Initialize state
+  const [image, setImage] = useState(null);
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
-    category: "Men",
+    category: "Women",
     newPrice: "",
     oldPrice: "",
   });
 
   const imageHandler = (e) => {
-    setImage(e.target.files[0]); // Set the selected file
+    setImage(e.target.files[0]);
   };
 
   const changeHandler = (e) => {
@@ -21,75 +21,96 @@ const AddProducts = () => {
   };
 
   const Add_Product = async () => {
-    console.log(productDetails);
-    let responseData;
-    let product = productDetails;
+    if (
+      !productDetails.name ||
+      !productDetails.oldPrice ||
+      !productDetails.newPrice
+    ) {
+      alert("Please fill all required fields.");
+      return;
+    }
 
-    let formData = new FormData();
+    let responseData;
+    const formData = new FormData();
     formData.append("product", image);
 
-    await fetch("http://localhost:4000/upload", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        responseData = data;
-      });
-
-    if (responseData && responseData.success) {
-      product.image = responseData.image_url;
-      console.log(product);
-
-      await fetch("http://localhost:4000/addproduct", {
+    try {
+      // Upload Image
+      const uploadResponse = await fetch("http://localhost:4000/upload", {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json",
         },
-        body: JSON.stringify(product),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success ? alert("Product Added") : alert("Failed");
-        });
+        body: formData,
+      });
+      responseData = await uploadResponse.json();
+
+      if (responseData.success) {
+        const product = { ...productDetails, image: responseData.image_url };
+
+        // Add Product
+        const productResponse = await fetch(
+          "http://localhost:4000/addproducts",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(product),
+          }
+        );
+        const productData = await productResponse.json();
+
+        if (productData.success) {
+          alert("Product added successfully!");
+        } else {
+          alert("Failed to add product.");
+        }
+      } else {
+        alert("Image upload failed.");
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+      alert("An error occurred.");
     }
   };
 
   return (
-    <div className="AddProducts">
+    <div className="add-Product">
       <div className="addproduct-itemfield">
-        <p>Product Title</p>
+        <p>Product title</p>
         <input
           value={productDetails.name}
           onChange={changeHandler}
           type="text"
           name="name"
-          placeholder="Type Here"
-        />
-      </div>
-      <div className="addproduct-itemfield">
-        <p>Price</p>
-        <input
-          value={productDetails.oldPrice}
-          onChange={changeHandler}
-          type="text"
-          name="oldPrice"
           placeholder="Type here"
         />
       </div>
-      <div className="addproduct-itemfield">
-        <p>Offer Price</p>
-        <input
-          value={productDetails.newPrice}
-          onChange={changeHandler}
-          type="text"
-          name="newPrice"
-          placeholder="Type here"
-        />
+      <div className="addproduct-price">
+        <div className="addproduct-itemfield">
+          <p>Price</p>
+          <input
+            value={productDetails.oldPrice}
+            onChange={changeHandler}
+            type="text"
+            name="oldPrice"
+            placeholder="Type here"
+          />
+        </div>
+      </div>
+      <div className="addproduct-price">
+        <div className="addproduct-itemfield">
+          <p>Offer Price</p>
+          <input
+            value={productDetails.newPrice}
+            onChange={changeHandler}
+            type="text"
+            name="newPrice"
+            placeholder="Type here"
+          />
+        </div>
       </div>
       <div className="addproduct-itemfield">
         <p>Product Category</p>
@@ -107,9 +128,9 @@ const AddProducts = () => {
       <div className="addproduct-itemfield">
         <label htmlFor="file-input">
           <img
-            src={image ? URL.createObjectURL(image) : upload} // Check if image is selected
+            src={image ? URL.createObjectURL(image) : upload}
+            alt="Product Thumbnail"
             className="addproduct-thumbnail-img"
-            alt="Upload Icon"
           />
         </label>
         <input

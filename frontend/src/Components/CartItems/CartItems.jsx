@@ -7,11 +7,19 @@ const CartItems = () => {
   const { all_product, cartItems, addToCart, removeFromCart } =
     useContext(ShopContext);
   const navigate = useNavigate();
+
   // Calculate Subtotal
   const calculateSubtotal = () => {
     return all_product.reduce((subtotal, product) => {
-      const price = parseFloat(product.newPrice.replace("$", "")) || 0; // Parse product price
-      const quantity = cartItems[product.id] || 0; // Get product quantity
+      // Check if newPrice is a string with a '$' sign or a number
+      let price = 0;
+      if (typeof product.newPrice === "string") {
+        price = parseFloat(product.newPrice.replace("$", "")) || 0; // Remove '$' and parse as float
+      } else if (typeof product.newPrice === "number") {
+        price = product.newPrice; // If it's already a number, use it directly
+      }
+
+      const quantity = cartItems[product.id] || 0; // Get product quantity from the cart
       return subtotal + price * quantity;
     }, 0);
   };
@@ -30,34 +38,35 @@ const CartItems = () => {
       </div>
       <hr />
 
-      {all_product.map((e) => {
-        if (cartItems[e.id] > 0) {
-          const price = parseFloat(e.newPrice.replace("$", "")) || 0;
-          const quantity = cartItems[e.id] || 0;
+      {all_product.map((product) => {
+        // Only display items that are in the cart
+        if (cartItems[product.id] > 0) {
+          const price = parseFloat(product.newPrice.replace("$", "")) || 0;
+          const quantity = cartItems[product.id] || 0;
           const total = price * quantity;
 
           return (
-            <div className="cartitems-format" key={e.id}>
-              <img src={e.image} alt="" className="carticon-product-icon" />
-              <p>{e.name}</p>
+            <div className="cartitems-format" key={product.id}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="carticon-product-icon"
+              />
+              <p>{product.name}</p>
               <p>{price.toFixed(2)}</p>
               <button className="cartitems-quantity">{quantity}</button>
               <p>{total.toFixed(2)}</p>
               <div className="cartitems-actions">
                 {/* Add Increase Quantity Button */}
                 <button
-                  onClick={() => {
-                    addToCart(e.id);
-                  }}
+                  onClick={() => addToCart(product.id)}
                   className="increase-button"
                 >
                   ADD
                 </button>
                 {/* Remove From Cart Button */}
                 <button
-                  onClick={() => {
-                    removeFromCart(e.id);
-                  }}
+                  onClick={() => removeFromCart(product.id)}
                   className="remove-button"
                 >
                   REDUCE
